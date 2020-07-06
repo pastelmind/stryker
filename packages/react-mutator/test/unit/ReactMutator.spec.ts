@@ -2,13 +2,13 @@ import { File } from '@stryker-mutator/api/core';
 import { testInjector } from '@stryker-mutator/test-helpers';
 import { expect } from 'chai';
 
-import { JavaScriptMutator } from '../../src/JavaScriptMutator';
+import { ReactMutator } from '../../src/ReactMutator';
 import { nodeMutators } from '../../src/mutators';
 import { NodeMutator } from '../../src/mutators/NodeMutator';
 import BabelParser from '../../src/helpers/BabelParser';
 import { NODE_MUTATORS_TOKEN, PARSER_TOKEN } from '../../src/helpers/tokens';
 
-describe('JavaScriptMutator', () => {
+describe('ReactMutator', () => {
   let selectedMutators: readonly NodeMutator[];
 
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe('JavaScriptMutator', () => {
     return testInjector.injector
       .provideValue(NODE_MUTATORS_TOKEN, selectedMutators)
       .provideClass(PARSER_TOKEN, BabelParser)
-      .injectClass(JavaScriptMutator);
+      .injectClass(ReactMutator);
   }
 
   it('should generate a correct mutant', () => {

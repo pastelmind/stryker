@@ -8,7 +8,7 @@ import BabelParser from './helpers/BabelParser';
 import { NodeMutator } from './mutators/NodeMutator';
 import { NODE_MUTATORS_TOKEN, PARSER_TOKEN } from './helpers/tokens';
 
-export class JavaScriptMutator implements Mutator {
+export class ReactMutator implements Mutator {
   public static inject = tokens(commonTokens.logger, NODE_MUTATORS_TOKEN, PARSER_TOKEN);
   constructor(private readonly log: Logger, private readonly mutators: readonly NodeMutator[], private readonly parser: BabelParser) {}
 

@@ -4,7 +4,7 @@ import ExpectMutation from '@stryker-mutator/mutator-specification/src/ExpectMut
 import { testInjector } from '@stryker-mutator/test-helpers';
 import { expect } from 'chai';
 
-import { JavaScriptMutator } from '../../src/JavaScriptMutator';
+import { ReactMutator } from '../../src/ReactMutator';
 import { NodeMutator } from '../../src/mutators/NodeMutator';
 import { NODE_MUTATORS_TOKEN, PARSER_TOKEN } from '../../src/helpers/tokens';
 import BabelParser from '../../src/helpers/BabelParser';
@@ -16,12 +16,12 @@ export function verifySpecification(specification: (name: string, expectMutation
 }
 
 export function expectMutation(mutator: NodeMutator, sourceText: string, ...expectedTexts: string[]) {
-  const javaScriptMutator = testInjector.injector
+  const reactMutator = testInjector.injector
     .provideValue(NODE_MUTATORS_TOKEN, [mutator])
     .provideClass(PARSER_TOKEN, BabelParser)
-    .injectClass(JavaScriptMutator);
+    .injectClass(ReactMutator);
   const sourceFile = new File('file.js', sourceText);
-  const mutants = javaScriptMutator.mutate([sourceFile]);
+  const mutants = reactMutator.mutate([sourceFile]);
   expect(mutants).lengthOf(expectedTexts.length);
   const actualMutantTexts = mutants.map((mutant) => mutantToString(mutant, sourceText));
   expectedTexts.forEach((expected) => expect(actualMutantTexts, `was: ${actualMutantTexts.join(',')}`).to.include(expected));
