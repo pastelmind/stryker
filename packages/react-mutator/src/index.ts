@@ -5,7 +5,7 @@ import { nodeMutators } from './mutators';
 import { NODE_MUTATORS_TOKEN, PARSER_TOKEN } from './helpers/tokens';
 import BabelParser from './helpers/BabelParser';
 
-export const strykerPlugins = [declareFactoryPlugin(PluginKind.Mutator, 'javascript', javaScriptMutatorFactory)];
+export const strykerPlugins = [declareFactoryPlugin(PluginKind.Mutator, 'react', reactMutatorFactory)];
 
 function javaScriptMutatorFactory(injector: Injector<OptionsContext>): JavaScriptMutator {
   return injector.provideValue(NODE_MUTATORS_TOKEN, nodeMutators).provideClass(PARSER_TOKEN, BabelParser).injectClass(JavaScriptMutator);

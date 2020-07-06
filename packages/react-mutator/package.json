@@ -1,7 +1,7 @@
 {
-  "name": "@stryker-mutator/javascript-mutator",
+  "name": "@stryker-mutator/react-mutator",
   "version": "3.3.1",
-  "description": "A plugin for javascript projects using Stryker",
+  "description": "A plugin for React projects using Stryker",
   "main": "src/index.js",
   "scripts": {
     "test": "nyc --exclude-after-remap=false --check-coverage --reporter=html --report-dir=reports/coverage --lines 85 --functions 90 --branches 60 npm run mocha",
@@ -18,6 +18,7 @@
   "keywords": [
     "stryker",
     "javascript",
+    "react",
     "@stryker-mutator/mutator-plugin"
   ],
   "publishConfig": {
@@ -33,7 +34,6 @@
     "Thomas Peters <thomaspeters4@outlook.com>",
     "Sander Koenders <sanderkoenders@gmail.com>"
   ],
-  "homepage": "https://github.com/stryker-mutator/stryker/tree/master/packages/javascript-mutator#readme",
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/generator": "~7.9.4",
