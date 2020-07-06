@@ -10,6 +10,7 @@ import StringLiteralMutator from './StringLiteralMutator';
 import LogicalOperatorMutator from './LogicalOperatorMutator';
 import UnaryOperatorMutator from './UnaryOperatorMutator';
 import UpdateOperatorMutator from './UpdateOperatorMutator';
+import JsxChangeNameCaseMutator from './JsxChangeNameCaseMutator';
 
 export const nodeMutators = Object.freeze([
   new ArithmeticOperatorMutator(),
@@ -24,4 +25,5 @@ export const nodeMutators = Object.freeze([
   new StringLiteralMutator(),
   new UnaryOperatorMutator(),
   new UpdateOperatorMutator(),
+  new JsxChangeNameCaseMutator(),
 ]);

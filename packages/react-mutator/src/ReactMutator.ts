@@ -16,6 +16,8 @@ export class ReactMutator implements Mutator {
     const mutants: Mutant[] = [];
 
     inputFiles.forEach((file) => {
+      if (!(file.name.endsWith('.js') || file.name.endsWith('.jsx'))) return;
+
       const ast = this.parser.parse(file.textContent);
 
       this.parser.getNodes(ast).forEach((node) => {
