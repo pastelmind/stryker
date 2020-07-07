@@ -87,6 +87,10 @@
     {
       "name": "parent",
       "path": "."
+    },
+    {
+      "name": "react-mutator",
+      "path": "packages/react-mutator"
     }
   ],
   "settings": {

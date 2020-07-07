@@ -13,6 +13,7 @@
     { "path": "packages/mocha-framework" },
     { "path": "packages/mocha-runner" },
     { "path": "packages/mutator-specification" },
+    { "path": "packages/react-mutator" },
     { "path": "packages/typescript" },
     { "path": "packages/vue-mutator" },
     { "path": "packages/wct-runner" },
