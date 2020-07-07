@@ -6,9 +6,11 @@
 
 ![Stryker](https://github.com/stryker-mutator/stryker/raw/master/stryker-80x80.png)
 
-# Stryker JavaScript mutator
+# Stryker React mutator
 
-A mutator that supports JavaScript for [Stryker](https://stryker-mutator.io), the JavaScript Mutation testing framework. This plugin does not transpile any code. The code that the @stryker-mutator/javascript-mutator gets should be executable in your environment (i.e. the @stryker-mutator/javascript-mutator does not add support for Babel projects).
+**Note: This plugin is our class project for CS453 Automated Software Testing. This is not production-ready at all.**
+
+A mutator that supports React for [Stryker](https://stryker-mutator.io), the JavaScript Mutation testing framework. This plugin does not transpile any code. The code that the @stryker-mutator/react-mutator gets should be executable in your environment (i.e. the @stryker-mutator/react-mutator does not add support for Babel projects).
 
 ## Quickstart
 
@@ -16,19 +18,18 @@ First, install Stryker itself (you can follow the [quickstart on the website](ht
 
 Next, install this package:
 
-```bash
-npm install --save-dev @stryker-mutator/javascript-mutator
-```
+~~`npm install --save-dev @stryker-mutator/react-mutator`~~  
+*(This plugin is probably not installable yet)*
 
 Now open up your `stryker.conf.js` (or `stryker.conf.json`) file and add the following components:
 
 ```javascript
-mutator: 'javascript',
+mutator: 'react',
 // OR
 mutator: {
-    name: 'javascript',
+    name: 'react',
     plugins: ['classProperties', 'optionalChaining'],
-    excludedMutations: ['BooleanSubstitution', 'StringLiteral']
+    excludedMutations: ['JsxChangeNameCase']
 }
 ```
 
@@ -59,4 +60,4 @@ See [Stryker core's readme](https://github.com/stryker-mutator/stryker/tree/mast
 
 The `JavaScript Mutator` is a plugin to mutate JavaScript code. This is done using Babel without any plugins.
 
-See [test code](https://github.com/stryker-mutator/stryker/tree/master/packages/javascript-mutator/test/unit/mutators) to know which mutations are supported.
+See [test code](./test/unit/mutators) to know which mutations are supported.

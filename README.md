@@ -8,6 +8,8 @@
 
 # Stryker
 
+**NOTE: This fork is for our CS453 class project, Stryker React Mutator. Please see the [README for Stryker React Mutator](./packages/react-mutator/).**
+
 *Professor X: For someone who hates mutants... you certainly keep some strange company.*
 *William Stryker: Oh, they serve their purpose... as long as they can be controlled.*
 
