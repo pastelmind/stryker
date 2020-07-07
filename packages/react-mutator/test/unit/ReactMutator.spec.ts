@@ -22,21 +22,6 @@ describe('ReactMutator', () => {
       .injectClass(ReactMutator);
   }
 
-  it('should generate a correct mutant', () => {
-    const mutator = createSut();
-    const files: File[] = [new File('testFile.js', '"use strict"; var a = 1 + 2;')];
-
-    const mutants = mutator.mutate(files);
-
-    expect(mutants.length).to.equal(1);
-    expect(mutants[0]).to.deep.equal({
-      fileName: files[0].name,
-      mutatorName: 'ArithmeticOperator',
-      range: [22, 27],
-      replacement: '1 - 2',
-    });
-  });
-
   it('should generate mutant a correct mutant for jsx code', () => {
     const mutator = createSut();
     const files: File[] = [
@@ -63,12 +48,12 @@ describe('ReactMutator', () => {
 
     const mutants = mutator.mutate(files);
 
-    expect(mutants.length).to.equal(7);
+    expect(mutants.length).to.equal(1);
     expect(mutants).to.deep.include({
       fileName: 'testFile.jsx',
-      mutatorName: 'ConditionalExpression',
-      range: [197, 202],
-      replacement: 'true',
+      mutatorName: 'JsxChangeNameCase',
+      range: [290, 314],
+      replacement: '<app message="Hello!" />',
     });
   });
 
@@ -126,12 +111,12 @@ describe('ReactMutator', () => {
 
     const mutants = mutator.mutate(files);
 
-    expect(mutants.length).to.equal(8);
+    expect(mutants.length).to.equal(2);
     expect(mutants).to.deep.include({
       fileName: 'testFile.js',
-      mutatorName: 'ConditionalExpression',
-      range: [121, 128],
-      replacement: 'false',
+      mutatorName: 'JsxChangeNameCase',
+      range: [289, 321],
+      replacement: '<H1>{getMessage(message)}</H1>',
     });
   });
 
@@ -141,11 +126,10 @@ describe('ReactMutator', () => {
       new File(
         'testFile.js',
         `
-          function objectRestSpread(input) {
-            return {
-              ...input,
-              foo: true,
-            };
+          function SomeElement(input) {
+            return (
+              <span></span>
+            );
           }
 
           class ClassProperties { b = 1n; }
@@ -163,13 +147,13 @@ describe('ReactMutator', () => {
     ];
 
     const mutants = sut.mutate(files);
-    expect(mutants).lengthOf.above(2);
+    expect(mutants).lengthOf.above(0);
   });
 
   it('should generate mutants for multiple files', () => {
     const mutator = createSut();
-    const file: File = new File('testFile.js', '"use strict"; var a = 1 + 2;');
-    const file2: File = new File('testFile2.js', '"use strict"; var a = 1 + 2;');
+    const file: File = new File('testFile.js', '() => (<div></div>)');
+    const file2: File = new File('testFile2.jsx', '() => (<div></div>)');
     const mutants = mutator.mutate([file, file2]);
 
     expect(mutants.length).to.equal(2);
@@ -182,8 +166,10 @@ describe('ReactMutator', () => {
         'testFile.js',
         `
           @decorator()
-          export class Foo {
-            bar = 'bar';
+          export class MyElement {
+            render() {
+              return <div></div>;
+            }
           };
         `
       ),
